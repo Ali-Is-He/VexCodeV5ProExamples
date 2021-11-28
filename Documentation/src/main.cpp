@@ -11,10 +11,11 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-             
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
-#include "vex.h"
+// This file has all the code you will be using for auton and driver controll 
+
+#include "vex.h" // Including this file gets all the libraries from the vex.h and the hardware we defined in robot-config.h and included in vex.h. Thats how the harware definitions get to this file
 
 using namespace vex;
 
