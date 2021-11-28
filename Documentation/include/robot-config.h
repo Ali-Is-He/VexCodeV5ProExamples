@@ -23,10 +23,12 @@ using namespace vex;
   In VexV5 Pro you can decalre Motor and MotorGroup
   - Motor       <-- Used to declare single motor
   - MotorGroup  <-- Used to declare multiple motors that will be working together in 1 sub system
+
+  NOTE: You have to declare the motors you plan on using in the motor group. So if you have a leftDrive motor group you also need to separately declare the motors that would be in that group
   
-  The general way to decalre a Motor is as follows:
+  The general way to declare a Motor is as follows:
     - extern Motor motorName
-  The general way to decalre a MotorGroup is as follows:
+  The general way to declare a MotorGroup is as follows:
     - extern MotorGroup motorGroupName
 
 
@@ -36,9 +38,15 @@ using namespace vex;
     - "MotorName" or "motorGroupName" <-- is the name you will be using to reference that object for the rest of the code
   BELOW ARE A FEW EXAMPLES OF Motor and MotorGroup DECLARATIONS
 */
-extern motor_group leftDrive; 
-extern motor_group rightDrive;   // Group for the motors on the Right side of the base
-extern motor_group launcher;     // Group for the motors on the laucher
+extern motor leftFrontDrive;    // Motor for the front left motor on the base
+extern motor leftBackDrive;     // Motor for the back left motor on the base
+extern motor rightFrontDrive;   // Motor for the front right motor on the base
+extern motor rightBackDrive;    // Motor for the back right motor on the base
+extern motor bottomLauncher;    // Bottom motor of the launcher
+extern motor topLauncher;       // Top motor of the launcher
+extern motor_group leftDrive;   // Group for the motors on the Right side of the base
+extern motor_group rightDrive;  // Group for the motors on the Right side of the base
+extern motor_group launcher;    // Group for the motors on the laucher
 extern motor LowerIntake;       // Motor for the lower intake because we want to control them individually
 extern motor UpperIntake;       // Motor for the Upper intake because we want to control them individually
 extern brain Brain;
