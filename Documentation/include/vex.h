@@ -7,6 +7,9 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 //
+
+// This is a file that has all the libraries you plan on using in your code
+// We dont really need to change this file
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +18,7 @@
 #include "v5.h"
 #include "v5_vcs.h"
 
-#include "robot-config.h"
+#include "robot-config.h" // This line imports all of the hardware we defined from robot-config.h and makes that available in this file
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
