@@ -33,3 +33,6 @@
 
 #configurations for compiling
 Documentation/compile_commands.json
+
+#build files
+Documentation/build/*
