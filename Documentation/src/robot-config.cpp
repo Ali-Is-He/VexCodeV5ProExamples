@@ -52,17 +52,23 @@ motor leftFrontDrive = motor(1, gearSetting::ratio18_1, false);
 motor leftBackDrive = motor(2,gearSetting::ratio18_1, true);     
 motor rightFrontDrive= motor(3, gearSetting::ratio18_1,false);   
 motor rightBackDrive = motor(4,gearSetting::ratio18_1,true);    
+motor_group leftDrive = motor_group(leftFrontDrive, leftBackDrive);   
+motor_group rightDrive = motor_group(rightFrontDrive, rightBackDrive); 
+drivetrain base = drivetrain(leftDrive, rightDrive);
+
 motor bottomLauncher = motor(5,gearSetting::ratio18_1, false);    
 motor topLauncher = motor(6, gearSetting::ratio18_1, true);       
-motor_group leftDrive = motor_group(leftFrontDrive, leftBackDrive);   
-motor_group rightDrive = motor_group(rightFrontDrive, rightBackDrive);  
 motor_group launcher = motor_group(bottomLauncher,topLauncher);    
+
 motor LowerIntake = motor(7,gearSetting::ratio6_1, false);      
 motor UpperIntake= motor(8, gearSetting::ratio6_1, false);
 
 line ballDetectIntake = line(Brain.ThreeWirePort.A);           
 limit launcherPullbackDetector = limit(Brain.ThreeWirePort.B);   
-pot armPot = pot(Brain.ThreeWirePort.C);                      
+pot armPot = pot(Brain.ThreeWirePort.C);          
+
+controller mainController= controller(controllerType::primary);
+controller secondaryController = controller(controllerType::partner);
 
 
 
