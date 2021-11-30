@@ -51,8 +51,21 @@ void pre_auton(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
+//function for intaking until the sensor sees a ball
+void intakeTilBall()
+{
+  while(ballDetectIntake.value(analogUnits::pct) <75)
+  {
+    LowerIntake.spin(directionType::fwd, 85, percentUnits::pct);
+    UpperIntake.spin(directionType::fwd, 75, velocityUnits::rpm);
+  }
+    LowerIntake.spin(directionType::fwd, 0, percentUnits::pct);
+    UpperIntake.spin(directionType::fwd, 0, velocityUnits::rpm);
+}
 
 void autonomous(void) {
+  base.driveFor(20, distanceUnits::in, 100, velocityUnits::pct,false);
+  intakeTilBall();
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
@@ -71,6 +84,42 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
+    ////// Set the base to the values from the joystick for tank control
+    leftDrive.spin(directionType::fwd, mainController.Axis1.value(), percentUnits::pct);
+    rightDrive.spin(directionType::fwd, mainController.Axis2.value(), percentUnits::pct);
+
+    // If button A is pressed, then power the launcher
+    if(mainController.ButtonA.pressing())
+    {
+      launcher.spin(directionType::fwd, 100, percentUnits::pct);
+    } 
+    else{
+      launcher.spin(directionType::fwd, 0, percentUnits::pct);
+    }
+
+    // If B is pressed intake, if X is pressed outtake, if nothing is pressed and the ballDetector line follower doesnt see a ball, then we intake, other wise we do nothing
+    if(secondaryController.ButtonB.pressing())
+    {
+      UpperIntake.spin(directionType::fwd, 100, percentUnits::pct);
+    }
+    else if(secondaryController.ButtonX.pressing())
+    {
+      UpperIntake.spin(directionType::rev, 100, percentUnits::pct);
+    }
+    else if(ballDetectIntake.value(analogUnits::pct) < 75)
+    {
+      UpperIntake.spin(directionType::fwd, 50, percentUnits::pct);
+    }
+    else
+    {
+      UpperIntake.spin(directionType::fwd, 0, percentUnits::pct);
+    }
+
+    if(!launcherPullbackDetector.pressing())
+    {
+      launcher.spin(directionType::fwd, 100, velocityUnits::pct);
+    }
+
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
