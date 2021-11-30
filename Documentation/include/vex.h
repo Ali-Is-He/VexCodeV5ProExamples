@@ -9,7 +9,7 @@
 //
 
 // This is a file that has all the libraries you plan on using in your code
-// We dont really need to change this file
+// We dont really need to change this file other than add new files we want included in here
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,7 +19,7 @@
 #include "v5_vcs.h"
 
 #include "robot-config.h" // This line imports all of the hardware we defined from robot-config.h and makes that available in this file
-
+#include "functions.h"    // This is a file we made for all the functions 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
     wait(5, msec);                                                             \
