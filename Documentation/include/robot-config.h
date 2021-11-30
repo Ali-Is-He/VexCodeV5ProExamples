@@ -49,7 +49,8 @@ extern motor_group rightDrive;  // Group for the motors on the Right side of the
 extern motor_group launcher;    // Group for the motors on the laucher
 extern motor LowerIntake;       // Motor for the lower intake because we want to control them individually
 extern motor UpperIntake;       // Motor for the Upper intake because we want to control them individually
-extern brain Brain;
+extern brain Brain;             // Brain
+extern drivetrain base;         // The drivetrain that we will be making (will only be used for auto)
 ////////////////////////////////////////////
 
 
@@ -106,7 +107,7 @@ extern pot armPot;                      // Potentiometer
   Controller declaration is similar to previous declarations
 */
 extern controller mainController;       //Main controller
-extern controller secondartController;  //Partner controller
+extern controller secondaryController;  //Partner controller
 ////////////////////////////////////////////
 
 
