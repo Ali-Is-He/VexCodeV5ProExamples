@@ -50,7 +50,8 @@ extern motor_group launcher;    // Group for the motors on the laucher
 extern motor LowerIntake;       // Motor for the lower intake because we want to control them individually
 extern motor UpperIntake;       // Motor for the Upper intake because we want to control them individually
 extern brain Brain;             // Brain
-extern drivetrain base;         // The drivetrain that we will be making (will only be used for auto)
+//extern drivetrain base;         // The drivetrain that we will be making (will only be used for auto) -- only use if you are not using an inertia sensor 
+extern smartdrive smartbase;    // the drive train we will use for auto if we have an inertia sensor
 ////////////////////////////////////////////
 
 
@@ -100,6 +101,7 @@ extern drivetrain base;         // The drivetrain that we will be making (will o
 extern line ballDetectIntake;           //Line follower
 extern limit launcherPullbackDetector;  // Limit switch
 extern pot armPot;                      // Potentiometer
+extern inertial inertiaSensor;         // inertiaSensor
 ////////////////////////////////////////////
 
 //////////  CONTROLLER  DECLARATION /////////
