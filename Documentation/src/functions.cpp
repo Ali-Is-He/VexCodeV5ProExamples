@@ -28,7 +28,12 @@ void skills()
 }
 
 //example how to write a function that gives back a number
-int calculatePain(int howManyTime)
+int calculatePain(int howManyTimes)
 {
-  return 0;
+  int pain= 0;
+  for(int i=0; i<howManyTimes; i++)
+  {
+    pain +=1;
+  }
+  return pain;
 }
