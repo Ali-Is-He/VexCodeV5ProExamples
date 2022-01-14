@@ -76,6 +76,10 @@ void usercontrol(void) {
     leftDrive.spin(directionType::fwd, mainController.Axis1.value(), percentUnits::pct);
     rightDrive.spin(directionType::fwd, mainController.Axis2.value(), percentUnits::pct);
 
+    if (mainController.ButtonL1.pressing())
+    {
+      clawPiston.set(!clawPiston.value());
+    }
     // If button A is pressed, then power the launcher
     if(mainController.ButtonA.pressing())
     {

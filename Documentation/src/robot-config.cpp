@@ -72,8 +72,8 @@ inertial inertiaSensor = inertial(20);
 controller mainController= controller(controllerType::primary);
 controller secondaryController = controller(controllerType::partner);
 
-
-
+pneumatics clawPiston = pneumatics( Brain.ThreeWirePort.A);
+// digital_out clawPiston = digital_out(Brain.ThreeWirePort.A);
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

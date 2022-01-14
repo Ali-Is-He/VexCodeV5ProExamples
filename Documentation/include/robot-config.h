@@ -102,6 +102,9 @@ extern line ballDetectIntake;           //Line follower
 extern limit launcherPullbackDetector;  // Limit switch
 extern pot armPot;                      // Potentiometer
 extern inertial inertiaSensor;         // inertiaSensor
+extern pneumatics clawPiston;
+// extern digital_out clawPiston;
+
 ////////////////////////////////////////////
 
 //////////  CONTROLLER  DECLARATION /////////
