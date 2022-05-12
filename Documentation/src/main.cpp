@@ -53,7 +53,7 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-  redAuton();
+  
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
@@ -76,10 +76,9 @@ void usercontrol(void) {
     leftDrive.spin(directionType::fwd, mainController.Axis1.value(), percentUnits::pct);
     rightDrive.spin(directionType::fwd, mainController.Axis2.value(), percentUnits::pct);
 
-    if (mainController.ButtonL1.pressing())
-    {
-      clawPiston.set(!clawPiston.value());
-    }
+    // If Button L1 is pressed, then toggle the clawpiston to be the opposite of whatever it currently is
+    mainController.ButtonL1.pressed(togglePiston);
+    
     // If button A is pressed, then power the launcher
     if(mainController.ButtonA.pressing())
     {
@@ -109,9 +108,17 @@ void usercontrol(void) {
       secondaryController.Screen.print("WE GOT A BALL");
     }
 
+    // If the limit switch that checks if the launcher is pulled back isnt pressed down by the launcher (i.e the launcher isnt pulled back), then pull back the launcher
     if(!launcherPullbackDetector.pressing())
     {
       launcher.spin(directionType::fwd, 100, velocityUnits::pct);
+    }
+
+    //If the resistance of the motor increased, that means we have some ball or something in our intake; NOTE: need to test to figure out if 100 is the right threshhold, 
+    // this threadshold will be different for every robot
+    if (UpperIntake.voltage()/UpperIntake.current() > 100 )
+    {
+      secondaryController.Screen.print("resistance increased, we might have picked up a ball");
     }
 
     // This is the main execution loop for the user control program.
