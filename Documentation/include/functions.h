@@ -24,3 +24,9 @@ void skills();                        //The whole skills auto
 void redAuton();                      //The whole red auto
 void intakeTilBall();                 //Function that intakes until we get a ball in the intake
 int calculatePain(int howManyTime);   //example how to write a function that gives back a number
+void pickUpGoal();
+void scorePoints();
+void doADance();
+void blueAuton();
+int  countballs();
+void togglePiston();                  //Function for toggling piston state
