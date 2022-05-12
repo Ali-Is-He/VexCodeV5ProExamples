@@ -17,9 +17,24 @@ void redAuton()
 {
   smartbase.driveFor(20, distanceUnits::in, 100, velocityUnits::pct,false);
   intakeTilBall();
-  smartbase.turnToRotation(90, rotationUnits::deg, 90, velocityUnits::pct);
+  smartbase.turnToRotation(45, rotationUnits::deg, 90, velocityUnits::pct);
 }
 
+void blueAuton()
+{
+
+}
+
+int countballs()
+{
+  int numBalls=0;
+  if(ballDetectIntake.value(percentUnits::pct) == 100)
+  {
+    numBalls = numBalls +1;
+  }
+  //if sensor sees a ball, add 1
+  return numBalls;
+}
 
 //The whole skills auto
 void skills()
@@ -37,3 +52,8 @@ int calculatePain(int howManyTimes)
   }
   return pain;
 }
+
+ void togglePiston()
+ {
+   clawPiston.set(!clawPiston.value());
+ }
