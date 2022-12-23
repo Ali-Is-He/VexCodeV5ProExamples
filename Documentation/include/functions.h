@@ -30,3 +30,6 @@ void doADance();
 void blueAuton();
 int  countballs();
 void togglePiston();                  //Function for toggling piston state
+void flywheelPID(double target);      // PID for flyhweels
+void launcherPID(double target);      // PID for positional things like catapule
+double power2Volts(int powerValue);   // function for converting "power" values [-127,127] to milivolts
