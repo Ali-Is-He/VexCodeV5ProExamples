@@ -70,8 +70,8 @@ double power2Volts(double powerVal)
   return volts;
 }
 
- //example function for flywheel PID
- void flywheelPID(double target)
+//example function for flywheel PID
+void flywheelPID(double target)
  {
   // Constants
   const double MAX_FLYWHEEL_RPM = 3000.00; // Set this to whatever the maximum RPM your flywhee is going to run
@@ -138,3 +138,73 @@ double power2Volts(double powerVal)
   }
   
  }
+/// all variables for TBH
+long targetVelocity;
+long currentVelocity; 
+long lastVelocity;
+float error;
+float last_error;
+float gain;
+float Drive; 
+float driveAtZero;
+long firstCross;
+float drive_approx;
+long motor_drive;
+
+// function that sets flywheel speed
+void setFlywheelMotor(double powerVal)
+{
+  double flywheelSpeed = power2Volts( powerVal);
+  launcher.spin(fwd,flywheelSpeed, voltageUnits::mV);
+}
+
+void updateFlywheelVelocity()
+{
+  error= targetVelocity-currentVelocity;
+  Drive= Drive + (error *gain);
+  if (Drive >1)
+  {
+    Drive=1;
+  }
+  if (Drive<0)
+  {
+    Drive=0;
+  }
+
+  //check for zero crossing
+  if (__signbitf(error) != __signbitf(last_error))
+  {
+    if (firstCross)
+    {
+      Drive = drive_approx;
+      firstCross=0;
+    }
+    else
+    {
+      Drive = (0.5 * Drive + driveAtZero);
+    }
+    driveAtZero = Drive;
+  }
+  last_error = error;
+}
+
+void flywheelTBH(double target)
+{
+  gain= 0.00025;
+  while (true)
+  {
+    currentVelocity = launcher.velocity(velocityUnits::rpm)*6;
+    updateFlywheelVelocity();
+    motor_drive = (Drive*127.00) +0.5;
+
+    if(motor_drive >127)
+    {
+      motor_drive =127;
+    }
+    if (motor_drive <-127)
+    {
+      motor_drive=-127;
+    }
+    setFlywheelMotor(motor_drive);
+  }
+}
