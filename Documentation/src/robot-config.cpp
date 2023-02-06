@@ -36,7 +36,7 @@ Breaking down each word for motor1 instanitation is:
   "motor"                         <-- The type, tells the compile you are instantiating a motor
   "motor1"                        <-- The name of the motor. You will refer to this motor as this name for the rest of the code
   "motor("                        <-- The start of the constructor for the motor
-  "1"                             <-- The port the motor is plugged into
+  "1"                             <-- The port the motor is plugged into **VERY IMPORTANT NOTE THAT THESE ARE 0 INDEXED SO 0 IS PORT 1 and 1 is PORT 2 **
   "geatSetting::ratio18_1"        <-- The gear setting for the motor (ratio18_1 is green, ratio36_1 is red, ratio6_1 is blue) 
   "true"                          <-- Whether the motor is reversed. true means this motor is reverse, false means the motor is not reversed.
 
