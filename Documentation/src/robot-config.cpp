@@ -36,7 +36,7 @@ Breaking down each word for motor1 instanitation is:
   "motor"                         <-- The type, tells the compile you are instantiating a motor
   "motor1"                        <-- The name of the motor. You will refer to this motor as this name for the rest of the code
   "motor("                        <-- The start of the constructor for the motor
-  "1"                             <-- The port the motor is plugged into **VERY IMPORTANT NOTE THAT THESE ARE 0 INDEXED SO 0 IS PORT 1 and 1 is PORT 2 **
+  "1"                             <-- The port the motor is plugged into **VERY IMPORTANT NOTE THAT THESE ARE 0 INDEXED SO 0 IS PORT 1 and 1 is PORT 2 **, use PORT1 if you want the port 1 to be utilized
   "geatSetting::ratio18_1"        <-- The gear setting for the motor (ratio18_1 is green, ratio36_1 is red, ratio6_1 is blue) 
   "true"                          <-- Whether the motor is reversed. true means this motor is reverse, false means the motor is not reversed.
 
@@ -48,10 +48,10 @@ Breaking down each word for motor_group instantiation is:
 
   BELOW ARE A FEW EXAMPLES OF motor, motor_group, and sensor INSTANTIATIONS
 */
-motor leftFrontDrive = motor(1, gearSetting::ratio18_1, false);    
-motor leftBackDrive = motor(2,gearSetting::ratio18_1, true);     
-motor rightFrontDrive= motor(3, gearSetting::ratio18_1,false);   
-motor rightBackDrive = motor(4,gearSetting::ratio18_1,true);    
+motor leftFrontDrive = motor(PORT1, gearSetting::ratio18_1, false);    
+motor leftBackDrive = motor(PORT2,gearSetting::ratio18_1, true);     
+motor rightFrontDrive= motor(PORT3, gearSetting::ratio18_1,false);   
+motor rightBackDrive = motor(PORT4,gearSetting::ratio18_1,true);    
 motor_group leftDrive = motor_group(leftFrontDrive, leftBackDrive);   
 motor_group rightDrive = motor_group(rightFrontDrive, rightBackDrive); 
 //drivetrain base = drivetrain(leftDrive, rightDrive, 12.566, 10.0, 15.0, distanceUnits::in, 1.0); // if we are not using an inertia sensor we can use the regular drivetrain
@@ -67,7 +67,7 @@ motor UpperIntake= motor(8, gearSetting::ratio6_1, false);
 line ballDetectIntake = line(Brain.ThreeWirePort.A);           
 limit launcherPullbackDetector = limit(Brain.ThreeWirePort.B);   
 pot armPot = pot(Brain.ThreeWirePort.C);
-inertial inertiaSensor = inertial(20);
+inertial inertiaSensor = inertial(PORT20);
 
 controller mainController= controller(controllerType::primary);
 controller secondaryController = controller(controllerType::partner);
