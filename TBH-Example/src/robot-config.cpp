@@ -15,5 +15,6 @@ controller mainController = controller(controllerType::primary); // main control
  * This should be called at the start of your int main function.
  */
 void vexcodeInit(void) {
+  FlywheelMotors.setStopping(brakeType::coast);
   // Nothing to initialize
 }
