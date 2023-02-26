@@ -54,7 +54,7 @@ void pre_auton(void) {
 
 void autonomous(void) {
   task FlywheelTBHManagerTask = task(flywheelTBHManager); // start the flywheel TBH manager in a task so it can constantly be updating the value the flywheel should be turning
-  flywheelTBHSet(75.00,0.3); // set the flywheel to go to 75 rpm and guess 30% of max output if it overshoots 
+  flywheelTBHSet(800.00,0.75); // set the flywheel to go to 75 rpm and guess 30% of max output if it overshoots 
   wait (10,sec);    // wait 10 seconds
   flywheelTBHSet(0,0);  //set the flywheel to go to 0 rpm
 
