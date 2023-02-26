@@ -5,6 +5,7 @@ extern motor FlywheelMotorA;
 extern motor FlywheelMotorB;
 extern motor_group FlywheelMotors;
 extern controller mainController;
+extern rotation flywheelRotationSensor;
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  *
